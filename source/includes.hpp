@@ -19,7 +19,9 @@
 #include <algorithm>
 #include <mutex>
 #include <strsafe.h>
+#include <bitset>
 
 using namespace std::chrono_literals;
 
 #include "menu/init.hpp"
+#include "menu/fonts/fonts.hpp"

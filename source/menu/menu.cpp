@@ -32,6 +32,28 @@ void Menu::Hotkey(int& key, int width, int height)
 		sz_text = ("bound to ") + Utils::ToLower(Utils::GetKeyName(key));
 }
 
+void Menu::TopBar()
+{
+	ImGui::Text("test clicker"); ImGui::SameLine();
+
+	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(30, 30, 39, 0));
+	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(30, 30, 39, 0));
+	ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(30, 30, 39, 0));
+
+	SetX(GetX() + 90);
+
+	ImGui::PushFont(exitIcon);
+
+	if (ImGui::Button("a", ImVec2(30, 23)))
+		std::exit(EXIT_SUCCESS);
+
+	ImGui::PopFont();
+
+	ImGui::PopStyleColor(3);
+
+	ImGui::Separator();
+}
+
 void Menu::MainScreen()
 {
   ImGui::SetNextWindowSize(ImVec2(windowSize.X, windowSize.Y));
@@ -40,17 +62,19 @@ void Menu::MainScreen()
 
 	ImGui::Begin("main_window", nullptr, MENU_FLAGS); 
 	{	
+		TopBar();
+
 		ImGui::Text("left cps");
 
 		ImGui::PushItemWidth(203);
 
-		ImGui::SliderFloat("###leftCps", &Clicker::leftCps, 0.0f, 20.0f, "%.2f");
+		ImGui::SliderFloat("###leftCps", &Clicker::leftCps, 0.0f, 20.0f, "%.1f");
 
-		Hotkey(Clicker::leftBind, 99, 20); ImGui::SameLine();
+		Hotkey(Clicker::leftBind, 99, 25); ImGui::SameLine();
 		
 		SetX(GetX() - 4);
 
-		if (ImGui::Button(Clicker::leftOn ? "toggle off" : "toggle on", ImVec2(100, 20)))
+		if (ImGui::Button(Clicker::leftOn ? "toggle off" : "toggle on", ImVec2(100, 25)))
 			Clicker::leftOn = !Clicker::leftOn;
 
 		ImGui::Checkbox("delete file", &Clicker::deleteFile);

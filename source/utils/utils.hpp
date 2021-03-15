@@ -46,6 +46,7 @@ namespace Utils
 	std::string GetKeyName(const int id);
   void SelfDelete();
 	void CenterWindow();
+	void EnableMenuDrag();
 }
 
 namespace Random

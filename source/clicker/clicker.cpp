@@ -81,6 +81,29 @@ float Clicker::Randomization(const MouseClick& click_type)
 {
 	while (true)
 	{               
+		auto isCursorVisible
+		{	
+			[&]()
+			{
+				CURSORINFO mouseInfo { sizeof(CURSORINFO) };
+
+				if (GetCursorInfo(&mouseInfo))
+				{
+					HCURSOR handle { mouseInfo.hCursor };
+
+					if ((int(handle) > 50000) & (int(handle) < 100000))
+						return true;
+					else
+						return false;
+				}
+			}
+		};
+
+		// While the cursor is visible, don't click (so only work in game really)
+		//
+		while (isCursorVisible())
+			std::this_thread::sleep_for(1ms);
+
 		isInMinecraft = GetForegroundWindow() == FindWindowA(winClass.c_str(), nullptr);
 
 		std::this_thread::sleep_for(1ms);
@@ -97,7 +120,7 @@ float Clicker::Randomization(const MouseClick& click_type)
 			{
 				// If they press mouse down
 				//	
-				if (GetAsyncKeyState(VK_LBUTTON) & 0x8000)
+				if (isKeyDown(VK_LBUTTON))
 					Clicker::MouseDn(MouseClick::Left);
 			}
 		}

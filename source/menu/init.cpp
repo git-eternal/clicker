@@ -121,7 +121,7 @@ int Menu::Initialize()
 
   hwnd = ::CreateWindow(
     wc.lpszClassName, _T(" "),
-    WS_SYSMENU | WS_CAPTION | WS_MINIMIZEBOX, 100, 100, windowSize.X, windowSize.Y,
+    WS_POPUP, 100, 100, windowSize.X, windowSize.Y,
     NULL, NULL, wc.hInstance, NULL
   );
 
@@ -145,16 +145,32 @@ void Menu::LoadStyles()
   // Setup ImGui context
   //
   IMGUI_CHECKVERSION();
+
   ImGui::CreateContext();
+
   ImGuiIO& io = ImGui::GetIO(); (void)io;
 
   // No imgui ini file
   //
-  io.IniFilename = nullptr; 
+  io.IniFilename = nullptr;
 
   // Setup Dear ImGui style
   //
   ImGui::StyleColorsDark();
+
+  // Add firaBold font (default)
+  //
+  Menu::firaBold = io.Fonts->AddFontFromMemoryCompressedTTF
+  (
+    Fonts::firaBold, 20, 20.0f, NULL, io.Fonts->GetGlyphRangesDefault()
+  );
+
+  // Add exitIcon font
+  //
+  Menu::exitIcon = io.Fonts->AddFontFromMemoryCompressedTTF
+  (
+    Fonts::exitIcon, 16, 16.0f, NULL, io.Fonts->GetGlyphRangesDefault()
+  );
 }
 
 void Menu::BeginLoop()
@@ -189,6 +205,10 @@ void Menu::BeginLoop()
     ImGui_ImplWin32_NewFrame();
 
     ImGui::NewFrame();
+
+    // So we can drag our WS_POPUP window around
+    //
+    Utils::EnableMenuDrag(); 
 
     // Render main menu
     //

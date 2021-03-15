@@ -111,10 +111,45 @@ void Utils::CenterWindow()
 
 	int posX{}, posY{};
 
-	posX = GetSystemMetrics(SM_CXSCREEN) / 2 - (rectWindow.right - rectWindow.left) / 4,
-	posY = GetSystemMetrics(SM_CYSCREEN) / 2 - (rectWindow.bottom - rectWindow.top) / 4,
+	posX = GetSystemMetrics(SM_CXSCREEN) / 2 - (rectWindow.right - rectWindow.left) / 2,
+	posY = GetSystemMetrics(SM_CYSCREEN) / 2 - (rectWindow.bottom - rectWindow.top) / 2,
 
 	MoveWindow(Menu::hwnd, posX, posY, 
 		rectClient.right - rectClient.left,
 		rectClient.bottom - rectClient.top, TRUE);
+}
+
+void Utils::EnableMenuDrag()
+{
+	if (ImGui::IsMouseClicked(0))
+	{
+		POINT cursorPosition{};
+		RECT  menuPosition{};
+
+		// Get the cursor position
+		//
+		GetCursorPos(&cursorPosition);
+		
+		// Get the window size
+		//
+		GetWindowRect(Menu::hwnd, &menuPosition);
+
+		// Calculate difference between cursor position and window position 
+		//
+		Menu::movementX = cursorPosition.x - menuPosition.left;
+		Menu::movementY = cursorPosition.y - menuPosition.top;
+	}
+
+	// If they are within the bounds of the top bar and are dragging mouse
+	//
+	if ((Menu::movementX >= 0 && Menu::movementY <= 54) && ImGui::IsMouseDragging(0))
+	{
+		POINT cursor_position; GetCursorPos(&cursor_position);
+
+		SetWindowPos(Menu::hwnd, nullptr,
+			cursor_position.x - Menu::movementX,
+			cursor_position.y - Menu::movementY,
+			0, 0, SWP_NOSIZE
+		);
+	}
 }

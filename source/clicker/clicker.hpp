@@ -69,4 +69,43 @@ namespace Clicker
 	/// If they want to delete file on exit
 	/// </summary>
 	inline bool deleteFile{ false };
+
+	/// <summary>
+	/// Check if big or small endian
+	/// </summary>
+	/// <returns></returns>
+	inline bool isBigEndian()
+	{
+		union 
+		{ 
+			uint32_t i; char c[4];
+		} 
+		bInt = { 0x01020304 };
+
+		return bInt.c[0] == 1;
+	}
+
+	/// <summary>
+	/// Check whether if the key is down or not
+	/// </summary>
+	/// <param name="v_key"></param>
+	/// <returns></returns>
+	inline bool isKeyDown(int vKey)
+	{
+		short keyState = GetAsyncKeyState(vKey);
+
+		// *should* always be 16
+		//
+		ULONGLONG shortBits = sizeof(short) * 8; 
+
+		std::bitset<16> keyStateBits(keyState);
+
+		if (isBigEndian())
+			keyStateBits.flip();
+
+		bool keyIsDown = keyStateBits.test(0);
+		bool pressedPost = keyStateBits.test(shortBits - 1);
+
+		return (keyIsDown || pressedPost);
+	}
 }

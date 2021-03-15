@@ -25,4 +25,11 @@ namespace Menu
 	void MainScreen();
 
 	void Hotkey(int& key, int width, int height);
+
+	void TopBar();
+
+	static int movementX{}, movementY{};
+
+	inline ImFont* firaBold{ nullptr };
+	inline ImFont* exitIcon{ nullptr };
 }
