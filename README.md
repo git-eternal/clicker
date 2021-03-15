@@ -15,3 +15,5 @@ simplistic imgui autoclicker base for minecraft
 
 # note
 to make this more secure, you can make your own auth, xor encrypt all plaintext strings, lazy import winapi functions and obfuscate with a protector like themida/vmprotect. enjoy!
+
+if you have questions about stuff, dm me on discord: eternity#1010
