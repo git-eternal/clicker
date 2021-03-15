@@ -34,7 +34,7 @@ namespace Menu
 	
 	inline ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-	inline COORD windowSize{ 600, 400 };
+	inline COORD windowSize{ 250, 225 };
 
 	int Initialize();
 	void LoadStyles();

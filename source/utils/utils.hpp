@@ -42,7 +42,10 @@ namespace Thread
 
 namespace Utils
 {
-
+	std::string ToLower(std::string str);
+	std::string GetKeyName(const int id);
+  void SelfDelete();
+	void CenterWindow();
 }
 
 namespace Random

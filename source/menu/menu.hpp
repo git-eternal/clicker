@@ -14,13 +14,15 @@
 	| ImGuiWindowFlags_NoTitleBar												\
 	| ImGuiWindowFlags_NoCollapse 
 
-#define set_x ImGui::SetCursorPosX
-#define set_y ImGui::SetCursorPosY
+#define SetX ImGui::SetCursorPosX
+#define SetY ImGui::SetCursorPosY
 
-#define get_x ImGui::GetCursorPosX
-#define get_y ImGui::GetCursorPosY
+#define GetX ImGui::GetCursorPosX
+#define GetY ImGui::GetCursorPosY
 
 namespace Menu
 {
 	void MainScreen();
+
+	void Hotkey(int& key, int width, int height);
 }

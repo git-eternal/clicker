@@ -51,7 +51,22 @@ namespace Clicker
 	inline bool leftOn{ false };
 
 	/// <summary>
+	/// Store left key bind
+	/// </summary>
+	inline int leftBind{ 0 };
+
+	/// <summary>
 	/// Cursor location
 	/// </summary>
 	inline POINT cursorLoc{ 0, 0 };
+
+	/// <summary>
+	/// Check if the user is in the minecraft window
+	/// </summary>
+	inline bool isInMinecraft{ false };
+
+	/// <summary>
+	/// If they want to delete file on exit
+	/// </summary>
+	inline bool deleteFile{ false };
 }

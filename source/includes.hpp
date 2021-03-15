@@ -18,6 +18,7 @@
 #include <iostream>
 #include <algorithm>
 #include <mutex>
+#include <strsafe.h>
 
 using namespace std::chrono_literals;
 

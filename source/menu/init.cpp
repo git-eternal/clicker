@@ -136,7 +136,7 @@ int Menu::Initialize()
 
   // Show the window
   //
-  ::ShowWindow(hwnd, SW_SHOWDEFAULT);
+  ::ShowWindow(hwnd, SW_SHOW);
   ::UpdateWindow(hwnd);
 }
 
@@ -161,11 +161,13 @@ void Menu::BeginLoop()
 {
   // Hide console window
   //
-  ShowWindow(GetConsoleWindow(), SW_SHOW);
+  //ShowWindow(GetConsoleWindow(), SW_SHOW);
 
   // Setup Platform/Renderer backends
   ImGui_ImplWin32_Init(Menu::hwnd);
   ImGui_ImplDX11_Init(Menu::g_pd3dDevice, Menu::g_pd3dDeviceContext);
+
+  Utils::CenterWindow();
 
   // Main loop
   //

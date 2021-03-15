@@ -81,7 +81,7 @@ float Clicker::Randomization(const MouseClick& click_type)
 {
 	while (true)
 	{               
-		bool isInMinecraft = GetForegroundWindow() == FindWindowA(winClass.c_str(), nullptr);
+		isInMinecraft = GetForegroundWindow() == FindWindowA(winClass.c_str(), nullptr);
 
 		std::this_thread::sleep_for(1ms);
 
