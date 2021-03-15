@@ -1,9 +1,5 @@
 #include "includes.hpp"
-
 #include "hooks/hooks.hpp"
-
-//
-//#pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -26,6 +22,4 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
   Menu::Initialize();
   Menu::LoadStyles();
   Menu::BeginLoop();
-
-  return 0;
 }
