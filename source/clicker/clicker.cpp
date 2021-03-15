@@ -19,18 +19,18 @@ auto Clicker::MouseUp(const MouseClick& clickType) -> void
 		}
 		break;
 
-		// If we want to right click up
-	  //
-		case MouseClick::Right:
-		{
-			SendMessage(
-				FindWindow(winClass.c_str(), nullptr),
-				WM_RBUTTONUP,
-				MK_RBUTTON,
-				MAKELPARAM(cursorLoc.x, cursorLoc.y)
-			);
-		}
-		break;
+		//// If we want to right click up
+	 // //
+		//case MouseClick::Right:
+		//{
+		//	SendMessage(
+		//		FindWindow(winClass.c_str(), nullptr),
+		//		WM_RBUTTONUP,
+		//		MK_RBUTTON,
+		//		MAKELPARAM(cursorLoc.x, cursorLoc.y)
+		//	);
+		//}
+		//break;
 	}
 }
 
@@ -53,18 +53,18 @@ auto Clicker::MouseDn(const MouseClick& clickType) -> void
 		}
 		break;
 
-		// If we want to right click down
-		//
-		case MouseClick::Right:
-		{
-			SendMessage(
-				FindWindow(winClass.c_str(), nullptr),
-				WM_RBUTTONDOWN,
-				MK_RBUTTON,
-				MAKELPARAM(cursorLoc.x, cursorLoc.y)
-			);
-		}
-		break;
+		//// If we want to right click down
+		////
+		//case MouseClick::Right:
+		//{
+		//	SendMessage(
+		//		FindWindow(winClass.c_str(), nullptr),
+		//		WM_RBUTTONDOWN,
+		//		MK_RBUTTON,
+		//		MAKELPARAM(cursorLoc.x, cursorLoc.y)
+		//	);
+		//}
+		//break;
 	}
 }
 

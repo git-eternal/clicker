@@ -10,7 +10,7 @@ namespace Clicker
 	const std::string winClass{ "LWJGL" };
 
 	/// <summary>
-	/// Mouse side enum
+	/// Mouse side enum (might add right clicker later so this is here for now)
   /// </summary>
 	enum class MouseClick : int
 	{
