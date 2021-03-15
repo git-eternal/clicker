@@ -164,6 +164,7 @@
     <ClInclude Include="source\menu\init.hpp" />
     <ClInclude Include="source\includes.hpp" />
     <ClInclude Include="source\menu\menu.hpp" />
+    <ClInclude Include="source\utils\utils.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\backends\imgui_impl_dx11.cpp" />
@@ -180,6 +181,7 @@
     </ClCompile>
     <ClCompile Include="source\menu\init.cpp" />
     <ClCompile Include="source\menu\menu.cpp" />
+    <ClCompile Include="source\utils\utils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

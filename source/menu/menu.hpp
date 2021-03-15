@@ -4,6 +4,8 @@
 
 #include "init.hpp"
 
+#include "../clicker/clicker.hpp"
+
 #define MENU_FLAGS ImGuiWindowFlags_NoScrollWithMouse \
 	| ImGuiWindowFlags_NoResize												  \
 	| ImGuiWindowFlags_NoMove														\

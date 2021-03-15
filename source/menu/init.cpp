@@ -121,7 +121,7 @@ int Menu::Initialize()
 
   hwnd = ::CreateWindow(
     wc.lpszClassName, _T(" "),
-    WS_OVERLAPPEDWINDOW, 100, 100, windowSize.X, windowSize.Y,
+    WS_SYSMENU | WS_CAPTION | WS_MINIMIZEBOX, 100, 100, windowSize.X, windowSize.Y,
     NULL, NULL, wc.hInstance, NULL
   );
 
@@ -148,7 +148,7 @@ void Menu::LoadStyles()
   ImGui::CreateContext();
   ImGuiIO& io = ImGui::GetIO(); (void)io;
 
-  // No ini file
+  // No imgui ini file
   //
   io.IniFilename = nullptr; 
 
@@ -159,6 +159,10 @@ void Menu::LoadStyles()
 
 void Menu::BeginLoop()
 {
+  // Hide console window
+  //
+  ShowWindow(GetConsoleWindow(), SW_SHOW);
+
   // Setup Platform/Renderer backends
   ImGui_ImplWin32_Init(Menu::hwnd);
   ImGui_ImplDX11_Init(Menu::g_pd3dDevice, Menu::g_pd3dDeviceContext);

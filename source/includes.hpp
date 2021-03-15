@@ -10,5 +10,15 @@
 #include "../imgui/backends/imgui_impl_dx11.h"
 #include <d3d11.h>
 #include <tchar.h>
+#include <thread>
+#include <chrono>
+#include <random>
+#include <ctime>
+#include <functional>
+#include <iostream>
+#include <algorithm>
+#include <mutex>
+
+using namespace std::chrono_literals;
 
 #include "menu/init.hpp"
