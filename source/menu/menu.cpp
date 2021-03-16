@@ -40,7 +40,7 @@ void Menu::TopBar()
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(30, 30, 39, 0));
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(30, 30, 39, 0));
 
-	SetX(GetX() + 90);
+	SetX(GetX() + 93);
 
 	ImGui::PushFont(exitIcon);
 

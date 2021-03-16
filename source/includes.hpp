@@ -1,8 +1,11 @@
 #pragma once
 
 // Exclude rarely-used stuff from Windows headers
+//
 #define WIN32_LEAN_AND_MEAN
+
 // Use std::min and std::max instead of min() and max()
+//
 #define NOMINMAX 
 
 #include "../imgui/imgui.h"

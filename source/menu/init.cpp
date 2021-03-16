@@ -24,7 +24,12 @@ bool Menu::CreateDeviceD3D(HWND hWnd)
   //createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
   D3D_FEATURE_LEVEL featureLevel;
   const D3D_FEATURE_LEVEL featureLevelArray[2] = { D3D_FEATURE_LEVEL_11_0, D3D_FEATURE_LEVEL_10_0, };
-  if (D3D11CreateDeviceAndSwapChain(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, createDeviceFlags, featureLevelArray, 2, D3D11_SDK_VERSION, &sd, &g_pSwapChain, &g_pd3dDevice, &featureLevel, &g_pd3dDeviceContext) != S_OK)
+
+  if (D3D11CreateDeviceAndSwapChain(
+    NULL,  D3D_DRIVER_TYPE_HARDWARE, NULL, 
+    createDeviceFlags, featureLevelArray, 2, 
+    D3D11_SDK_VERSION, &sd, &g_pSwapChain, 
+    &g_pd3dDevice, &featureLevel, &g_pd3dDeviceContext) != S_OK)
     return false;
 
   CreateRenderTarget();
@@ -37,15 +42,20 @@ void Menu::CleanupDeviceD3D()
 
   if (g_pSwapChain)
   {
-    g_pSwapChain->Release(); g_pSwapChain = NULL;
+    g_pSwapChain->Release(); 
+    g_pSwapChain = nullptr;
   }
+
   if (g_pd3dDeviceContext)
   {
-    g_pd3dDeviceContext->Release(); g_pd3dDeviceContext = NULL;
+    g_pd3dDeviceContext->Release();
+    g_pd3dDeviceContext = nullptr;
   }
+
   if (g_pd3dDevice)
   {
-    g_pd3dDevice->Release(); g_pd3dDevice = NULL;
+    g_pd3dDevice->Release(); 
+    g_pd3dDevice = nullptr;
   }
 }
 
@@ -63,8 +73,10 @@ void Menu::CreateRenderTarget()
 
 void Menu::CleanupRenderTarget()
 {
-  if (g_mainRenderTargetView) {
-    g_mainRenderTargetView->Release(); g_mainRenderTargetView = NULL;
+  if (g_mainRenderTargetView) 
+  {
+    g_mainRenderTargetView->Release(); 
+    g_mainRenderTargetView = nullptr;
   }
 }
 
@@ -98,8 +110,11 @@ LRESULT WINAPI Menu::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
     case WM_SYSCOMMAND:
     {
-      if ((wParam & 0xfff0) == SC_KEYMENU) // Disable ALT application menu
+      // Disable ALT application menu
+      //
+      if ((wParam & 0xfff0) == SC_KEYMENU)
         return 0;
+
       break;
     }
 
@@ -175,11 +190,8 @@ void Menu::LoadStyles()
 
 void Menu::BeginLoop()
 {
-  // Hide console window
-  //
-  //ShowWindow(GetConsoleWindow(), SW_SHOW);
-
   // Setup Platform/Renderer backends
+  //
   ImGui_ImplWin32_Init(Menu::hwnd);
   ImGui_ImplDX11_Init(Menu::g_pd3dDevice, Menu::g_pd3dDeviceContext);
 
@@ -234,7 +246,7 @@ void Menu::BeginLoop()
     ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
     Menu::g_pSwapChain->Present(1, 0); // Present with vsync
-    //g_pSwapChain->Present(0, 0); // Present without vsync
+    //g_pSwapChain->Present(0, 0); // Present without vsync (lots of CPU usage)
   }
 
   Menu::Cleanup();

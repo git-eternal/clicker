@@ -68,15 +68,6 @@ auto Clicker::MouseDn(const MouseClick& clickType) -> void
 	}
 }
 
-float Clicker::Randomization(const MouseClick& click_type)
-{
-	// Very simplistic randomization, but should bypass decent server anti-cheats.
-	// This is the only thing I will not spoonfeed. 
-	// Make a good randomization yourself!
-	//
-	return static_cast<float>(Random::GenerateNum(450, 550) / leftCps);
-}
-
 [[noreturn]] void Clicker::Thread()
 {
 	while (true)
@@ -104,6 +95,8 @@ float Clicker::Randomization(const MouseClick& click_type)
 		while (isCursorVisible())
 			std::this_thread::sleep_for(1ms);
 
+		// Check if their current window is Minecraft
+		//
 		isInMinecraft = GetForegroundWindow() == FindWindowA(winClass.c_str(), nullptr);
 
 		std::this_thread::sleep_for(1ms);
@@ -125,4 +118,13 @@ float Clicker::Randomization(const MouseClick& click_type)
 			}
 		}
 	}
+}
+
+float Clicker::Randomization(const MouseClick& click_type)
+{
+	// Very simplistic randomization, but should bypass decent server anti-cheats.
+	// This is the only thing I will not spoonfeed. 
+	// Make a good randomization yourself!
+	//
+	return static_cast<float>(Random::GenerateNum(450, 550) / leftCps);
 }

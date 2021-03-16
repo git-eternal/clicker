@@ -142,7 +142,7 @@ void Utils::EnableMenuDrag()
 
 	// If they are within the bounds of the top bar and are dragging mouse
 	//
-	if ((Menu::movementX >= 0 && Menu::movementY <= 54) && ImGui::IsMouseDragging(0))
+	if ((Menu::movementX >= 0 && Menu::movementY <= 40) && ImGui::IsMouseDragging(0))
 	{
 		POINT cursor_position; GetCursorPos(&cursor_position);
 
