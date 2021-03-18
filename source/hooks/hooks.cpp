@@ -14,12 +14,6 @@ LRESULT Hooks::KeyboardCallback(int code, WPARAM msg_id, LPARAM l_param)
 				{
 					Clicker::leftOn = !Clicker::leftOn;
 				}
-
-				//if (hook_struct->vkCode == right_key_bind)
-				//{
-				//	if (right_custom_key_binds)
-				//		right_on = !right_on;
-				//}
 			}
 		}
 	}
